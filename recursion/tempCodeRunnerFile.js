@@ -1,0 +1,1 @@
+word.slice(1, word.length)

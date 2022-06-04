@@ -23,7 +23,7 @@ function lengthOfLongestSubstring(str) {
   return ans;
 }
 
-console.log(lengthOfLongestSubstring("abcbacdefghabcdefghijklmnopqrstuvwxyz"));
+console.log(lengthOfLongestSubstring("abcdeeffg"));
 
 // Another way of coding
 /*

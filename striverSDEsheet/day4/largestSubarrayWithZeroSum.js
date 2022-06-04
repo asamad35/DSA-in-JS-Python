@@ -12,11 +12,11 @@ function maxLen(arr) {
     else {
       // check if sum exist in obj
       // if yes, return the length of subarray because it was added to the previous sum that we found in object, but doesnt effect the value of sum. Hence it's summation will be 0.
-      if (sum in obj) n = Math.max(maxLength, i - obj[sum]);
+      if (sum in obj) maxLength = Math.max(maxLength, i - obj[sum]);
       // store the sum with index in object for future comparison
       else obj[sum] = i;
     }
   }
-  return n;
+  return maxLength;
 }
 console.log(maxLen([1, -1, 3, 2, -2, -2, 1, 7, 10, 23]));

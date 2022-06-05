@@ -17,7 +17,8 @@ var merge = function (arr) {
 
 console.log(
   merge([
-    [1, 4],
-    [2, 3],
+    [1, 5],
+    [4, 8],
+    [0, 4],
   ])
 );

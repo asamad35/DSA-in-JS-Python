@@ -26,5 +26,6 @@ var merge = function (nums1, m, nums2, n) {
       p2--;
     }
   }
+  return nums1;
 };
 console.log(merge([1, 2, 8, 0, 0, 0], 3, [2, 5, 6], 3));

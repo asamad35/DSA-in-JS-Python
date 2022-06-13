@@ -26,6 +26,10 @@ var searchMatrix = function (matrix, target) {
   while (low <= high) {
     mid = ~~((low + high) / 2);
 
+    // to find row number we do ~~(mid/col) because every row contains no of elements equal to no of columns.
+    // So by dividing mid/col we get the quotient that denotes the row number of the targetted element.
+    //  And the remainder the denotes the column number.(row me remainder jitna aage jaoge to waha targetted element milega.Thoda socho simple logic he)
+
     if (matrix[~~(mid / col)][~~(mid % col)] === target) {
       return true;
     } else if (matrix[~~(mid / col)][~~(mid % col)] > target) {

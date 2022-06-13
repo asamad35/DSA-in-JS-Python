@@ -29,4 +29,4 @@ var majorityElement = function (nums) {
   return el;
 };
 
-console.log(majorityElement([3, 3, 4]));
+console.log(majorityElement([4, 1, 2, 4, 2, 1, 3, 4]));

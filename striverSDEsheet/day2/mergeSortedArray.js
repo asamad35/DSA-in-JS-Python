@@ -1,31 +1,29 @@
-// naive approach nLOg(n)
-/*
-var merge = function (nums1, m, nums2, n) {
-  for (let i = 0; i < n; i++) {
-    nums1[m + i] = nums2[i];
-  }
+//  dry run to get a better understanding ( easy he!! https://www.youtube.com/watch?v=P1Ic85RarKY)
 
-  nums1.sort((a, b) => a - b);
-  return nums1;
-};
-*/
+function mergeTwoSortedArrays(nums1, len1, nums2, len2) {
+  //  create three pointers
 
-// O(N) (two pointer)
-var merge = function (nums1, m, nums2, n) {
-  let p1 = m - 1;
-  let p2 = n - 1;
-  let k = m + n - 1;
+  let p1 = len1 - 1; // pointing at nums1 last positive number
+  let p2 = len2 - 1; // pointing at nums2 last index
+  let p1end = len1 + len2 - 1; // pointing at nums1 last index
+
+  // pointing at end of arays because array is sorted, taking advantage.
+
   while (p2 >= 0) {
-    if (p1 >= 0 && nums1[p1] > nums2[p2]) {
-      nums1[k] = nums1[p1];
-      p1--;
-      k--;
-    } else {
-      nums1[k] = nums2[p2];
-      k--;
+    // till p2 poinitng at nums2 last index
+    if (nums2[p2] >= nums1[p1]) {
+      // if true, insert element
+      nums1[p1end] = nums2[p2];
       p2--;
+    } else {
+      // if false p1end me number at p1 daldo. [1,2,2,3,0,5,6] --> [1,2,2,3,3,5,6] (duplicating "3" moving part of
+      // array forward untill nums2[p2] gets equal or greater than nums1[p1] )
+      nums1[p1end] = nums1[p1];
+      p1--;
     }
+    p1end--;
   }
   return nums1;
-};
-console.log(merge([1, 2, 8, 0, 0, 0], 3, [2, 5, 6], 3));
+}
+
+console.log(mergeTwoSortedArrays([1, 2, 2, 3, 0, 0, 0], 4, [1, 5, 6], 3));

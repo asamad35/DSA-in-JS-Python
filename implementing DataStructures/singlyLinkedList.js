@@ -57,6 +57,7 @@ class SinglyLinkedList {
     secondLastNode.next = null;
     this.tail = secondLastNode;
     this.length--;
+    return current 
     */
 
     //* Colt's popping algorithm
@@ -77,14 +78,137 @@ class SinglyLinkedList {
     newTail.next = null;
     this.tail = newTail;
     this.length--;
+    return current;
+  }
+
+  shift() {
+    //- if head is not present
+    if (!this.head) return undefined;
+
+    //- storing old head
+    const oldHead = this.head;
+
+    // - initializing head pointer with the second node
+    this.head = this.head.next;
+    this.length--;
+    // if length is 0 head and tail pointer will be null
+    // head is already null as head is intitialized as 2nd node which is null in case of 0 length.
+    if (this.length === 0) this.tail = null;
+    return oldHead;
+  }
+
+  unshift(value) {
+    // create a new node
+    const newNode = new Node(value);
+
+    // - if length is 0 then we can use pop method which is already defined
+    if (this.length === 0) {
+      this.push(value);
+    } else {
+      // - just add ther new node as head
+      newNode.next = this.head;
+      this.head = newNode;
+      this.length++;
+    }
+    return this;
+  }
+
+  get(index) {
+    // - if index is 0 or more than length (counting from 0 index)
+    if (index < 0 || index > this.length - 1) return undefined;
+
+    // - get the target node
+    let targetNode = this.head;
+    let i = 0;
+    while (i < index) {
+      targetNode = targetNode.next;
+      i++;
+    }
+    return targetNode;
+  }
+
+  set(index, value) {
+    const targetNode = this.get(index);
+    if (targetNode === undefined) return undefined;
+    else targetNode.value = value;
+
+    return targetNode;
+  }
+
+  insert(index, value) {
+    // - if index is 0 or more than length
+    if (index < 0 || index > this.length) return undefined;
+
+    // - if index is equal to length then insert at end
+    if (index === this.length) {
+      this.push(value);
+      return this;
+    }
+    // - if index is equal to 0 then insert at start
+
+    if (index === 0) {
+      this.unshift(value);
+      return this;
+    }
+
+    // - if  none of the above condition true then insert at middle,
+
+    const prevNode = this.get(index - 1);
+    const insertNode = new Node(value);
+    const afterNode = this.get(index);
+
+    prevNode.next = insertNode;
+    insertNode.next = afterNode;
+    this.length++;
+    return this;
+  }
+
+  remove(index) {
+    if (index > this.length - 1 || index < 0) return undefined;
+
+    if (index === 0) return this.shift();
+
+    if (index === this.length - 1) return this.pop();
+
+    // - if node is in in middle
+    const prevNode = this.get(index - 1);
+    const removeNode = this.get(index);
+    const afterNode = this.get(index + 1);
+
+    prevNode.next = afterNode;
+    this.length--;
+
+    return removeNode;
+  }
+
+  reverse() {
+    // swap head and tail
+    let temp = null;
+    temp = this.tail;
+    this.tail = this.head;
+    this.head = temp;
+
+    // make three var to keep record, currentNode is tail because it is linked to further nodes
+    let prevNode = null;
+    let currentNode = this.tail;
+    let nextNode;
+
+    // directing currentNode to point towards previousNode. And then changing value of previousNode to currentNode and currentNode to nextNode
+    for (let i = 0; i < this.length; i++) {
+      // Dry Run to make it clear
+      nextNode = currentNode.next;
+      currentNode.next = prevNode;
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
   }
 }
 
 var list = new SinglyLinkedList();
-list.push("hi");
-list.push("there");
-list.push("heloo");
-list.push("heloo");
-list.pop();
-list.pop();
+list.push("1");
+list.push("2");
+list.push("3");
+
+list.reverse();
+
 console.log(list);

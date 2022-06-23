@@ -23,6 +23,5 @@ var removeNthFromEnd = function (head, n) {
     count--;
   }
   tempHead.next = tempHead.next.next;
-
   return head;
 };

@@ -1,43 +1,39 @@
-// show true when typing
-
 import "./styles.css";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+
 export default function App() {
   const [typing, setTyping] = useState("false");
 
-  // define timer here to give same refrence across all the re renders
-  let timer = null;
-
-  function callBack() {
+  function debounceCallback() {
     setTyping("false");
   }
-
-  function debounce(callBack, delay = 1000) {
-    // dont define timer here because when react local state changes it will re render the component, and the new refrence in memory will be created
-    // for timer. And that new refrence will timeout according to delay time.
-    return function () {
+  function debounce(debounceCallback, sec = 2000) {
+    let timer;
+    // all the argument will form the array as this is spread operator, so we have to use apply method to call the callback fucntion
+    return function (...args) {
+      // defining context for apply
+      const context = this;
       if (timer) clearTimeout(timer);
       timer = setTimeout(() => {
-        callBack();
-      }, delay);
+        debounceCallback.apply(context, args);
+      }, sec);
     };
   }
 
-  // my function contains the function returned by debounce, and make closure with debounce (timer)
-  // When myFunction is called again and again it will have the "timer" in closure
-  // if timer is empty set a timer using timeout else clear timer so the previoys function will never run
-  const myFunc = debounce(callBack, 1000);
+  // memoizing function is very important as it will not be re-defined when the page will re-render due to state changes.
+  const debounceClosure = useCallback(debounce(debounceCallback), []);
 
   return (
     <div className="App">
       <h1>Hello CodeSandbox</h1>
       <input
-        onKeyPress={() => {
-          myFunc();
+        onChange={() => {
           if (typing === "false") setTyping("true");
+          // the returned memoized function will be here in the place of debounce Closure
+          debounceClosure();
         }}
       />
-      <h2>Typing: {typing}</h2>
+      <h2>typing:{typing}</h2>
     </div>
   );
 }

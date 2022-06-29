@@ -1,15 +1,4 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
-
+// - Iterative solution O(N) s(1)
 var reverseList = function (head) {
   // if head is empty return head
   if (!head) return head;
@@ -33,4 +22,27 @@ var reverseList = function (head) {
 
   //   at last previous is last element as currentNode will be undefined
   return prevNode;
+};
+
+// - Recursive Solution O(N) S(N)
+
+// - If your more clearity refer to anuj bhaiya dry run (bottom to top)
+
+function recursiveReverse(head) {
+  // Base case
+  if (head === null || head.next === null) return head;
+
+  let newHead = recursiveReverse(head.next);
+
+  // nextNode ka next points to currentNode
+  // currentNode ka next points to null
+  head.next.next = head;
+  head.next = null;
+
+  return newHead;
+}
+
+var reverseList = function (head) {
+  let ans = recursiveReverse(head);
+  return ans;
 };

@@ -1,5 +1,5 @@
 var copyRandomList = function (head) {
-  // - Create a map to store key value pair with refrence.
+  // - Create a map to store key value pairs with refrence.
   let map = new Map([[null, null]]);
   //
   let start = head;

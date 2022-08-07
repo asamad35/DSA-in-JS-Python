@@ -1,7 +1,7 @@
 // ? we have to return the node with common address not the value
 
 // NAIVE t(o(n*m))
-/*
+
 var getIntersectionNode = function (headA, headB) {
   const list2 = headB;
   while (headA) {
@@ -15,10 +15,9 @@ var getIntersectionNode = function (headA, headB) {
   }
   return null;
 };
-*/
 
 // NAIVE t(o(m+n)) s(m)
-/*
+
 var getIntersectionNode = function (headA, headB) {
   // 1. create a set to store address of node of first list
   // 2. loop over the secondNodeList and check if secondListNode exist in set.
@@ -37,7 +36,6 @@ var getIntersectionNode = function (headA, headB) {
 
   return null;
 };
-*/
 
 // optimized o((m+x) + (n+x)) , s(1)  m,n are length different nodes and x is length of common node.
 

@@ -1,5 +1,4 @@
 // - Naive appraoch
-/*
 var middleNode = function (head) {
   if (!head) return head;
 
@@ -28,7 +27,6 @@ var middleNode = function (head) {
 
   return currentNode;
 };
-*/
 
 // - Optimal Approach (Slow and Fast pointer)
 var middleNode = function (head) {

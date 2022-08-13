@@ -19,7 +19,7 @@ var removeNthFromEnd = function (head, n) {
   if (n === count) return head.next;
 
   // traverse till (n-1)th node
-  while (count - n - 1 > 0) {
+  while (count - n - 1 ) {
     tempHead = tempHead.next;
     count--;
   }

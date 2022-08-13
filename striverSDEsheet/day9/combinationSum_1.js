@@ -42,7 +42,6 @@ var combinationSum = function (candidates, target) {
   const len = candidates.length;
 
   function combinationSum(idx, tempArr, target) {
-    console.log(tempArr, idx, target);
     if (target === 0) {
       // create new array dont pass refrence
       ans.push([...tempArr]);

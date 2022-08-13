@@ -11,7 +11,7 @@ function subsetSums(arr, n) {
   const subsetSumArr = [];
 
   function getAllSubsetSums(index, sum, arr) {
-    // edge case if we are cross the array boundary push sum.
+    // edge case if we cross the array boundary push sum.
     if (index === n) {
       subsetSumArr.push(sum);
       return;

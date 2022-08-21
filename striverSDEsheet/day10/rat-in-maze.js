@@ -87,7 +87,7 @@ function findPath(m, n) {
   const ans = [];
   const visitedMatrix = Array(n)
     .fill(0)
-    .map((el) => Array(n).fill(0));
+    .map((_) => Array(n).fill(0));
 
   // - finding deviation when we move down, left, right, up
   const deviationRow = [1, 0, 0, -1];

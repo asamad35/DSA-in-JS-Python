@@ -1,1 +1,0 @@
-getAllSubs('abcd')

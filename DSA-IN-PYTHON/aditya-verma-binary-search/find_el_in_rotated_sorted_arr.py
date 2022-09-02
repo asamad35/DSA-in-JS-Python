@@ -14,9 +14,13 @@ def search(self, nums, target):
             high = mid
     lowestIdx = high
 
-# finding target element using simple binary search
+# checking if lowestIdx el is target el
     if (nums[high] == target):
         return high
+
+# finding target element using simple binary search
+# -- both arrays across pivot is sorted, so if the end element of soted array is greater or equal to target then target el is present in second half.
+# -- else in first half.
 
     if (nums[len(nums)-1] >= target):
         newStart = lowestIdx+1

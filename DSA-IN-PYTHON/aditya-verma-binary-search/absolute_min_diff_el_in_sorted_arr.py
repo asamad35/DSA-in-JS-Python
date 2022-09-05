@@ -1,5 +1,7 @@
 arr = [2, 3, 8, 10, 15]
 
+# -- logically min absolute diff depend on floor and ceil of target element.
+
 
 def findEl(arr, target):
     [floorIdx, ceilIdx] = findFloorAndCeil(arr, target)

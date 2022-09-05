@@ -7,6 +7,8 @@ def firstAndLast(arr, target):
     last = lastSearch(arr, target)
     return [first, last]
 
+# --first occurence
+
 
 def firstSearch(arr, target):
     start = 0
@@ -15,6 +17,8 @@ def firstSearch(arr, target):
     while (start <= end):
         mid = (start+end)//2
         if (arr[mid] == target):
+            # -- if element has been found, do not return it because it is not necessary to be the last element.
+            # -- instead update end so we can check if the target element exist before it.
             res = mid
             end = mid-1
         elif (arr[mid] < target):
@@ -31,6 +35,8 @@ def lastSearch(arr, target):
     while (start <= end):
         mid = (start+end)//2
         if (arr[mid] == target):
+            # -- if element has been found, do not return it because it is not necessary to be the last element.
+            # -- instead update start so we can check if the target element exist after it.
             res = mid
             start = mid+1
         elif (arr[mid] < target):

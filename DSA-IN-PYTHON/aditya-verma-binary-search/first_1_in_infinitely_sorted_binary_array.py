@@ -1,4 +1,7 @@
+
 arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]
+
+# -- this question is the mixture of , finding first element and find element in infinitely sorted array.
 
 
 def binarySearch(arr):

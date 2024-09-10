@@ -6,14 +6,16 @@ function showText(text, timer) {
   });
 }
 
-function myPromiseAll(args) {
-  const arr = [];
+function myPromiseAll(promises) {
   return new Promise((resolve, reject) => {
-    args.forEach((prom, i) => {
-      prom
+    const result = [];
+    let resolvePromiseCount = 0
+    promises.forEach((promise, index) => {
+      promise
         .then((res) => {
-          arr.push(res);
-          if (i == args.length - 1) resolve(arr);
+          result[index] = res
+          resolvePromiseCount++
+          if (resolvePromiseCount === promises.length) resolve(result);
         })
         .catch((err) => reject(err));
     });
@@ -23,8 +25,8 @@ function myPromiseAll(args) {
 myPromiseAll([
   showText("aaa", 1),
   Promise.resolve("hi"),
-  Promise.reject("hello"),
-]).then((res) => console.log(res));
+  Promise.resolve("hello"),
+]).then((res) => console.log(res)).catch((err) => console.log(err));
 
 // Promise.all([showText("aaa", 1), Promise.resolve("hi")]).then((res) =>
 //   console.log(res)

@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 export default function App() {
   const [typing, setTyping] = useState("false");
 
-  function debounceCallback() {
+  function debounceCallback(args) {
     setTyping("false");
   }
   function debounce(debounceCallback, sec = 2000) {
@@ -21,7 +21,7 @@ export default function App() {
   }
 
   // memoizing function is very important as it will not be re-defined when the page will re-render due to state changes.
-  const debounceClosure = useCallback(debounce(debounceCallback), []);
+  const debouncedFunction = useCallback(debounce(debounceCallback), []);
 
   return (
     <div className="App">
@@ -30,7 +30,7 @@ export default function App() {
         onChange={() => {
           if (typing === "false") setTyping("true");
           // the returned memoized function will be here in the place of debounce Closure
-          debounceClosure();
+          debouncedFunction();
         }}
       />
       <h2>typing:{typing}</h2>

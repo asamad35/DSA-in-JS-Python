@@ -1,4 +1,4 @@
-function memoizedFunction(product) {
+function memoizedFunction(functionToBeMemoized) {
   let cache = {};
   return function (...args) {
     const argument = JSON.stringify(args);
@@ -9,14 +9,14 @@ function memoizedFunction(product) {
     } else {
       console.log("calc");
 
-      cache[argument] = product(...args);
+      cache[argument] = functionToBeMemoized(...args);
       return cache[argument];
     }
   };
 }
 
 function product(a, b) {
-  for (let i = 0; i < 1000000000; i++) {}
+  for (let i = 0; i < 1000000000; i++) { }
   return a * b;
 }
 

@@ -1,8 +1,13 @@
-function x() {
-  setTimeout(function () {
-    i = 1;
-    console.log(i);
-    var i;
-  }, 1000);
+function sum(a) {
+  return function (b) {
+    if (b) {
+      return sum(a + b)
+    }
+    return a
+  }
 }
-x();
+
+
+const result = sum(1)(2)(3)(5)()
+
+console.log(result)

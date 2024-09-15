@@ -7,18 +7,19 @@
  * 
  * 2. [1,2,6,12,14,20]
  * Minimize difference for 16
- * Here 16 is not present. So take the floor and cieling value of 16 that is 14 and 20
+ * Here 16 is not present. So take the floor and ceiling value of 16 that is 14 and 20
  * 16-14 = 2
  * 16-20 = -4
  * 
  * 2 is the minimum absolute difference.
+ * 
+ * Hint: to find floor and ceiling refer to Question 7findFloorOfElement
  */
 
 
 function findMinimumAbsoluteDifference(arr, searchTerm) {
   const floor = findFloorOrCeilingElement(arr, searchTerm, 'floor')
   const ceiling = findFloorOrCeilingElement(arr, searchTerm, 'ceiling')
-  console.log(floor, ceiling)
 
   const absoluteFloorDifference = Math.abs(floor - searchTerm)
   const absoluteCeilingDifference = Math.abs(ceiling - searchTerm)
@@ -49,4 +50,4 @@ function findFloorOrCeilingElement(arr, searchTerm, type) {
 }
 
 
-console.log(findMinimumAbsoluteDifference([1, 2, 6, 12, 14, 20], 16))
+console.log(findMinimumAbsoluteDifference([1, 2, 6, 12, 14, 20], 14))

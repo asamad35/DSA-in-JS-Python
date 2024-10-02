@@ -30,7 +30,7 @@ function firstNegativeInSizeKNaive(arr, k) {
   }
   return result
 }
-console.log(firstNegativeInSizeKNaive([30, -10, 28, 1, 4, -9, -3], 1))
+console.log(firstNegativeInSizeKNaive([12, -1, -7, 8, -15, 30, 16, 28], 3))
 
 /**
  * This is actually simple. 

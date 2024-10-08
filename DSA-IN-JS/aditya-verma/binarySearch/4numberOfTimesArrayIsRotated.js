@@ -1,5 +1,13 @@
 function numberOfTimesArrayIsRotated(arr, rotationType) {
   /*
+  What is clockwise and anticlockwise rotation?
+  Suppise we have an array [1,2,3,4,5]
+  If we rotate it clockwise 1 time it will be [5,1,2,3,4]
+  Visulaize it as a circular array. Which is pushed forward in a cicular rotation.
+
+  If we rotate it anticlockwise 1 time it will be [1,2,3,4,5]
+  Visulaize it as a circular array. Which is pulled back in a cicular rotation.
+
   Observation 1:
       For clockwise: Number of rotations = length of array - position of smallest element.
       For anticlockwise: Number of rotation = position of smallest element.
@@ -36,4 +44,5 @@ function numberOfTimesArrayIsRotated(arr, rotationType) {
   }
 }
 console.log(numberOfTimesArrayIsRotated([6, 1, 2, 3, 4, 5], 'clockwise'))
+
 

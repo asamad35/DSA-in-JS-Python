@@ -1,6 +1,14 @@
 /**
- * If search element floor is the search element
  * Floor of an element is defined as the greatest element but smaller than the search element.
+ * If mid element is smaller than search element, it means it is potential candidate for floor element.
+ * Hence we update result with mid.
+ * We keep doing this untill loop is completed.
+ * 
+ * Similarly we can find ceil of an element.
+ * If mid element is greater than search element, it means it is potential candidate for ceil element.
+ * Hence we update result with mid.
+ * We keep doing this untill loop is completed.
+ *  
  */
 
 function findFloorOfAnElement(arr, searchTerm) {
@@ -10,9 +18,9 @@ function findFloorOfAnElement(arr, searchTerm) {
   while (start <= end) {
     const mid = Math.floor((start + end) / 2)
     if (arr[mid] === searchTerm) return mid
-    if (arr[mid] < searchTerm) {
+    else  if (arr[mid] < searchTerm) {
       start = mid + 1
-      result = result < arr[mid] ? mid : result
+      result = mid
     } else if (arr[mid] > searchTerm) {
       end = mid - 1
     }
@@ -22,4 +30,4 @@ function findFloorOfAnElement(arr, searchTerm) {
 }
 
 
-console.log(findFloorOfAnElement([1, 2, 3, 6, 8, 15],10))
+console.log(findFloorOfAnElement([1, 3, 5, 6], 2))

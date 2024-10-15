@@ -46,7 +46,7 @@ function searchInRoatedArrayOptimized(arr, searchTerm) {
   return -1
 }
 
-console.log(searchInRoatedArrayOptimized([6, 1, 2, 3, 4, 5], 0))
+// console.log(searchInRoatedArrayOptimized([6, 1, 2, 3, 4, 5], 0))
 
 
 
@@ -80,8 +80,12 @@ function findSmallestElementInRoatedArray(arr) {
     const circularPrev = (mid - 1 + arr.length) % arr.length;
     const circularNext = (mid + 1) % arr.length;
 
-    if (arr[mid] < arr[circularPrev] && arr[mid] < arr[circularNext]) {
+    if (arr[mid] <= arr[circularPrev] && arr[mid] <= arr[circularNext]) {
       return mid
+    }
+    else if (arr[mid] >= arr[0] && arr[mid] <= arr[arr.length - 1]) { // If number of rotations === length of array, then both half of array is sorted.
+      // hence it will be monotonic and there will be no local minima.
+      return arr[0]
     }
     else if (arr[mid] >= arr[0]) {
       start = mid + 1
@@ -90,6 +94,8 @@ function findSmallestElementInRoatedArray(arr) {
     }
   }
 }
+
+console.log(findSmallestElementInRoatedArray([11, 13, 15, 17]))
 
 function binarySearch(arr, startingPoint, endingPoint, searchTerm) {
   let start = startingPoint;

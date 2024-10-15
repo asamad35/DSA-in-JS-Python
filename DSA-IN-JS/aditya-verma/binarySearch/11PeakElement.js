@@ -23,6 +23,7 @@ function peakElement(arr) {
 
   // handling edge cases
 
+  if (arr.length === 1) return arr[0]
   if (arr[0] > arr[1]) {
     return arr[0]
   }
@@ -48,4 +49,4 @@ function peakElement(arr) {
 }
 
 
-console.log(peakElement([5, 10, 2, 30, 40, 70, 50]))
+console.log(peakElement([2, 1]))

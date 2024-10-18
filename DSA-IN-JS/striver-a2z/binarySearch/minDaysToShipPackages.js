@@ -15,7 +15,7 @@ function findDaysForWeight(weight, weights) {
     }
     else if (weights[i] <= weight) {
       totalDays += 1;
-      remainingSpace =  weight - weights[i]
+      remainingSpace = weight - weights[i]
     }
   }
   return totalDays
@@ -39,4 +39,4 @@ var shipWithinDays = function (weights, days) {
 };
 
 
-console.log(shipWithinDays([1,2,3,4,5,6,7,8,9,10], 5))
+console.log(shipWithinDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5))

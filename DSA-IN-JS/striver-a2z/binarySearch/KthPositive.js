@@ -62,7 +62,7 @@ var findKthPositiveOptimized = function (arr, k) {
       end = mid - 1
     }
   }
-  // we are not using below because end can be a negative number. arr[end] will give NaN
+  // we are not using below because end can be a negative number. arr[end] will give NaN, so its a problem.
   // const missingCountAtEndPointer = arr[end] - (end + 1)
   // const remainingMissingCount = k - missingCountAtEndPointer
   // const answer = arr[end] + remainingMissingCount

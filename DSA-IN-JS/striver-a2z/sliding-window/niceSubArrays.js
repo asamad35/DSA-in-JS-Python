@@ -1,7 +1,5 @@
 /**
- * @param {number[]} nums
- * @param {number} k
- * @return {number}
+Same explanation as binarySubarrayWithSum
  */
 
 function findSubArraysWithAtleastKOdd(nums, k) {

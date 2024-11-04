@@ -1,28 +1,32 @@
 /**
- * @param {number[]} nums
- * @param {number} k
+ * @param {string} s
  * @return {number}
  */
+var numberOfSubstrings = function(s) {
+  let end =0, lastOccurence = [-1,-1,-1] , res = 0, len= s.length
 
-function findSubArraysWithAtleastKOdd(nums, k) {
-  let start = 0, end = 0, oddNums = 0, res = 0, len = nums.length
+  while(end<len){
 
-  while (end < len) {
-    if (nums[end] % 2 === 1) oddNums += 1;
-
-    while (oddNums > k) {
-      if (nums[start] % 2 === 1) oddNums -= 1;
-      start++
+    switch(s[end]){
+        case 'a': 
+            lastOccurence[0]=end
+            break
+        case 'b': 
+            lastOccurence[1]=end
+            break
+        case 'c': 
+            lastOccurence[2]=end
+            break
     }
 
-    res += end - start + 1
+    if(lastOccurence.every((el)=> el>-1)){
+        const smallestIndex = Math.min(...lastOccurence)
+        res += smallestIndex+1
+    }
     end++
   }
   return res
-}
-
-var numberOfSubarrays = function (nums, k) {
-  return findSubArraysWithAtleastKOdd(nums, k) - findSubArraysWithAtleastKOdd(nums, k - 1)
 };
 
-console.log(numberOfSubarrays([1, 1, 2, 1, 1], 3))
+
+console.log(numberOfSubstrings('abca'))

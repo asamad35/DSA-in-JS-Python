@@ -1,26 +1,40 @@
 /**
- * @param {number[]} cardPoints
- * @param {number} k
- * @return {number}
+ * @param {string} s
+ * @param {string} t
+ * @return {string}
  */
-var maxScore = function (cardPoints, k) {
-  let res = 0, leftSum = 0, rightSum = 0, rightIndex = cardPoints.length - 1
+var minWindow = function (s, t) {
+  let start = 0, end = 0, count = t.length, obj = {}, len = s.length, res = ""
 
-  for (let left = 0; left < k; left++) {
-    leftSum += cardPoints[left];
-  }
-  res = leftSum
-
-  for (let i = k - 1; i >= 0; i--) {
-    leftSum -= cardPoints[i];
-    rightSum += cardPoints[rightIndex]
-    rightIndex--
-
-    res = Math.max(res, leftSum + rightSum)
+  for (const alphabet of t) {
+    obj[alphabet] = (obj[alphabet] || 0) + 1
   }
 
+  while (end < len) {
+    if (s[end] in obj) {
+      if (obj[s[end]] > 0) {
+        count--
+      }
+      obj[s[end]]--
+    }
+
+    if (count === 0) {
+      while (count === 0) {
+        if (s[start] in obj) {
+          if (obj[s[start]] === 0) {
+            count++
+          }
+          obj[s[start]]++
+        }
+        if (end - start + 1 <= res.length || res === "") {
+          res = s.slice(start, end + 1)
+        }
+        start++
+      }
+    }
+    end++
+  }
   return res
-
 };
 
-console.log(maxScore([1, 2, 3, 4, 5, 6, 1], 3))
+console.log(minWindow("aa", "aa"))

@@ -19,6 +19,8 @@ function solve(output, input) {
 
 
 function spacePermuatation(str) {
+
+  // we dont want make decision from first character, hence create recursive tree from 2nd character.
   const output = str[0];
   const input = str.slice(1)
 

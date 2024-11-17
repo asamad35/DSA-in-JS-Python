@@ -14,7 +14,6 @@ function solve(output, input) {
 
   solve(output1, newInput)
   solve(output2, newInput)
-  return
 }
 
 

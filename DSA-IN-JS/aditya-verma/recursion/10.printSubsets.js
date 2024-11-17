@@ -10,8 +10,6 @@ function printSubsets(input, output = "") {
 
   printSubsets(input.slice(1), output + input[0])
   printSubsets(input.slice(1), output)
-
-  return
 }
 
 

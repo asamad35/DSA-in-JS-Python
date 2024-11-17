@@ -1,6 +1,6 @@
 // Input-output method.
-
-// Create recursive tree.
+// If u have make decisions then create recursive tree
+// Hence Create recursive tree.
 
 function printSubsets(input, output = "") {
   if (input === '') {

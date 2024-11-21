@@ -1,3 +1,5 @@
+// We have choices to add open bracket or close bracket, hence recursion will be used.
+// Input output method.
 
 function solve(output, brackets) {
   if (brackets.open === 0 && brackets.close === 0) {

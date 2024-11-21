@@ -1,3 +1,6 @@
+// We have choices to convert letter to lower case or upper case, hence recursion will be used.
+// Input output method.
+
 function solve(input, output = "", res) {
   if (input === '') {
     res.push(output);

@@ -1,26 +1,26 @@
 
-function knapsackMemoized(wt, val, w, n, matrix) {
+function knapsackMemoized(wt, val, knapsakcWeight, n, matrix) {
 
-  if (matrix[w][n] !== -1) return matrix[w][n]
+  if (matrix[knapsakcWeight][n] !== -1) return matrix[knapsakcWeight][n]
 
 
-  if (n === 0 || w === 0) {
+  if (n === 0 || knapsakcWeight === 0) {
     return 0
   }
 
-  if (wt[n - 1] <= w) {
-    // dont pick w[n-1]
-    const res1 = knapsackMemoized(wt, val, w, n - 1, matrix);
+  if (wt[n - 1] <= knapsakcWeight) {
+    // dont pick wt[n-1]
+    const res1 = knapsackMemoized(wt, val, knapsakcWeight, n - 1, matrix);
 
-    // pick w[n-1]
-    const res2 = val[n - 1] + knapsackMemoized(wt, val, w - wt[n - 1], n - 1, matrix);
+    // pick wt[n-1]
+    const res2 = val[n - 1] + knapsackMemoized(wt, val, knapsakcWeight - wt[n - 1], n - 1, matrix);
     const result = Math.max(res1, res2)
-    matrix[w][n] = result
+    matrix[knapsakcWeight][n] = result
     return result
   }
   else {
-    const result = knapsackMemoized(wt, val, w, n - 1, matrix);
-    matrix[w][n] = result
+    const result = knapsackMemoized(wt, val, knapsakcWeight, n - 1, matrix);
+    matrix[knapsakcWeight][n] = result
     return result
   }
 }

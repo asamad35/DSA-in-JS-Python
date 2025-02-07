@@ -50,7 +50,7 @@ function main() {
   const value = [11, 4, 5, 7]
   const knapsakcWeight = 7
   console.log(knapsackOptimized(weight, value, knapsakcWeight, weight.length))
-  console.log(knapsackOriginal(weight, value, knapsakcWeight, weight.length))
+  console.log(knapsackOriginal(weight, value, knapsakcWeight))
 }
 
 

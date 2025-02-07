@@ -31,7 +31,17 @@ function main() {
   const value = [11, 4, 5, 7]
   const knapsakcWeight = 7
 
-  // (weight.length + 1) and (knapsackWeight.length +1) +1 is added to include the base case where weight or knapsakcWeight will be 0 as they keep reducing. 
+  // create matrix for those values which are changing in the recursive function 
+  // because recursive function output depends on those changing values.
+  // for example in knapsackMemoized function, we are using knapsakcWeight and weight.length.
+  // so we need to create a matrix for these two values.
+
+  // (weight.length + 1) and (knapsackWeight.length +1), +1 is added to include the base case where weight or knapsakcWeight will be 0 as they keep reducing. 
+  // For example, if knapsakcWeight = 7, we need indices [0,1,2,3,4,5,6,7]
+  // That's 8 positions total (7+1), not 7
+  // If weight.length = 4, we need indices [0,1,2,3,4]
+  // That's 5 positions total (4+1), not 4
+
   const matrix = Array(knapsakcWeight + 1).fill(-1).map(() => Array(weight.length + 1).fill(-1))
   console.log(knapsackMemoized(weight, value, knapsakcWeight, weight.length, matrix))
 }

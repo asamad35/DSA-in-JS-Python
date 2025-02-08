@@ -36,6 +36,9 @@ function main() {
   // for example in knapsackMemoized function, we are using knapsakcWeight and weight.length.
   // so we need to create a matrix for these two values.
 
+  // NOTE MEMOIZATION DOESNT FILL-UP ALL THE CELLS SINCE IT ONLY CALCULATES THE CELL WHICH IS REQUIRED.
+  // IF WE WANT TO FILL-UP ALL THE CELLS THEN USE TABULAR (BOTTOM UP) APPROACH
+
   // (weight.length + 1) and (knapsackWeight.length +1), +1 is added to include the base case where weight or knapsakcWeight will be 0 as they keep reducing. 
   // For example, if knapsakcWeight = 7, we need indices [0,1,2,3,4,5,6,7]
   // That's 8 positions total (7+1), not 7
@@ -45,4 +48,4 @@ function main() {
   const matrix = Array(knapsakcWeight + 1).fill(-1).map(() => Array(weight.length + 1).fill(-1))
   console.log(knapsackMemoized(weight, value, knapsakcWeight, weight.length, matrix))
 }
-main()
+main() 

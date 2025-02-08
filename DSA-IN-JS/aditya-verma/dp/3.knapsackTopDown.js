@@ -23,9 +23,23 @@ function main() {
   // For 0 we have already results from base case. 
   // We will take the previous result to solve for the greater input
 
-  // change w(knapsack weight in recursive approach) with i(rows representing current knapsack weight).
-  // change n(length of weight array in recursive approach) with j(col represents weight array).
+  /**
+   * HOW TO CONVERT RECURSIVE SOLUTION TO TABULAR FORM?
+   * CREATE A MATRIX WITH CHANGING PARAMETERS.
+   * IN KNAPSACK IT IS USUALLY SUM AND LENGHT OF ARRAY.
+   * THIS MATRIX WILL STORE SOLUTION FOR ALL THE SUB-PROBLEMS.
+   * NOW MAP "recursive function name" TO "matrix name".
+   * MAP "length of array (n)" to rows (i) [it actually depends if length of array represents rows in matrix ]
+   * MAP "sum" to column (j) [it actually depends if sum represents column in matrix ]
+   * YES THATS ALL! 
+   */
 
+  /** 
+   * EXAMPLE
+   * change w(knapsackWeight(sum) in recursive approach) with i(rows representing current knapsack weight).
+   * change n(length of weight array in recursive approach) with j(col represents weight array).
+   * recursive function is changed to matrix.
+  */
   for (let i = 1; i < matrix.length; i++) {
     for (let j = 1; j < matrix[0].length; j++) {
       if (weight[j - 1] <= i) {

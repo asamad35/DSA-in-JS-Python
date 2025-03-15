@@ -13,6 +13,4 @@ function removeDuplicatesSortedArray(arr) {
   return arr.slice(0, start + 1)
 }
 
-
-
-console.log(removeDuplicatesSortedArray([0, 1, 2])) 
+console.log(removeDuplicatesSortedArray([0, 1, 1, 2])) 

@@ -46,7 +46,7 @@ function searchInRoatedArrayOptimized(arr, searchTerm) {
   return -1
 }
 
-// console.log(searchInRoatedArrayOptimized([6, 1, 2, 3, 4, 5], 0))
+console.log(searchInRoatedArrayOptimized([6, 1, 2, 3, 4, 5], 0))
 
 
 
@@ -95,7 +95,7 @@ function findSmallestElementInRoatedArray(arr) {
   }
 }
 
-console.log(findSmallestElementInRoatedArray([11, 13, 15, 17]))
+// console.log(findSmallestElementInRoatedArray([11, 13, 15, 17]))
 
 function binarySearch(arr, startingPoint, endingPoint, searchTerm) {
   let start = startingPoint;

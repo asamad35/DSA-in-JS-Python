@@ -5,7 +5,7 @@ function numberOfTimesArrayIsRotated(arr, rotationType) {
   If we rotate it clockwise 1 time it will be [5,1,2,3,4]
   Visulaize it as a circular array. Which is pushed forward in a cicular rotation.
 
-  If we rotate it anticlockwise 1 time it will be [1,2,3,4,5]
+  If we rotate it anticlockwise 1 time it will be [2,3,4,5,1]
   Visulaize it as a circular array. Which is pulled back in a cicular rotation.
 
   Observation 1:
@@ -56,6 +56,6 @@ function numberOfTimesArrayIsRotated(arr, rotationType) {
 
 
 }
-console.log(numberOfTimesArrayIsRotated([5, 1, 2, 3, 4], 'clockwise'))
+console.log(numberOfTimesArrayIsRotated([5, 4, 3, 1, 2], 'clockwise'))
 
 

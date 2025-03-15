@@ -1,3 +1,13 @@
+/**
+ * Create a function that efficiently finds the square of a number at a given index position from a large dataset (0 to 9,999,999).
+ * The function should be optimized to handle repeated queries without recalculating the entire dataset each time.
+ * Example:
+ * myFind(9)  // Output: 81  (because 9 * 9 = 81)
+ * myFind(4)  // Output: 16  (because 4 * 4 = 16)
+ * myFind(9)  // Output: 81  (should be faster on repeated queries)
+*/
+
+
 // First approach
 /*
 function optimizedFind(fn) {

@@ -35,15 +35,6 @@ class BST {
     return node;
   }
 
-  _getNodeHeight(node) {
-    if (node === null) return -1;
-    return node.height
-  }
-
-  getTreeHeight() {
-    console.log("Height of tree is ", this._getNodeHeight(this.root))
-  }
-
   preOrderTraversal() { // Order is node value ---> left node ---> right node
     this._display("Root Node:", this.root);
   }
@@ -94,11 +85,41 @@ class BST {
     this.populateSorted(nums, mid + 1, end)
   }
 
+  _getNodeHeight(node) {
+    if (node === null) return -1;
+    return node.height
+  }
+
+  getTreeHeight() {
+    console.log("Height of tree is ", this._getNodeHeight(this.root))
+  }
+
+  isEmpty() {
+    return this.root === null
+  }
+
+  isTreeBalanced() {
+    console.log(this._isNodeBalanced(this.root))
+  }
+
+  _isNodeBalanced(node) {
+    if (node === null) {
+      return true;
+    }
+    // Math.abs because if right is taller it will give -ve result which will pass.
+    // EG: -1 - 3 = -2, it is not balanced.
+    return Math.abs(this._getNodeHeight(node.left) - this._getNodeHeight(node.right)) <= 1 && this._isNodeBalanced(node.left) && this._isNodeBalanced(node.right)
+  }
+
+
+
+
 }
 
 const bst = new BST();
 bst.populateTree([10, 5, 7, 11, 3, 2, 6])
 // bst.populateSorted([1, 2, 3, 4, 5, 6])
-bst.getTreeHeight()
-bst.inOrderTraversal();
+// bst.getTreeHeight()
+// bst.inOrderTraversal();
+bst.isTreeBalanced()
 // bst.postOrderTraversal();

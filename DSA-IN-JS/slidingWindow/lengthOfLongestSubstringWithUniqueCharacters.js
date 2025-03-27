@@ -1,4 +1,4 @@
-function lengthOfLongestSubstring(s) {
+function lengthOfLongestSubstringWithUniqueCharacters(s) {
   let [start, end, ans] = [0, 0, 0];
   let set = new Set();
 
@@ -23,4 +23,5 @@ function lengthOfLongestSubstring(s) {
   return ans;
 }
 
-console.log(lengthOfLongestSubstring("abcbacdefgh"));
+console.log(lengthOfLongestSubstringWithUniqueCharacters("abcbacdefgh"));
+// console.log(lengthOfLongestSubstringWithUniqueCharacters("aa"));

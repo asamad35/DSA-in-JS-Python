@@ -10,6 +10,10 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
+
+
+// each level must be a palindrome in order to be a mirror image. 
+
 var isSymmetric = function (root) {
   function isArrayPalindrome(arr) {
     let start = 0;

@@ -49,23 +49,28 @@ var bfsConnect = function (root) {
 
 
 // using O(N) and S(1)
-function bfsConnectRecusrive(root) {
-  if (root === null || root.left === null || root.right === null) return root;
+function bfsConnectRecusrive(node) {
+  if (node === null || node.left === null || node.right === null) return node;
 
   /**
    * # Intuition
    * It is given what they are asking to do. So i simply did it.
    * 
+   * currentNode.left.next = currentNode.right
+   * currentNode.right = currentNode.next.left
+   * 
+   * call saem function for children subtrees
+   * 
    */
 
 
-  root.left.next = root.right;
-  if (root.next) root.right.next = root.next.left
+  node.left.next = node.right;
+  if (node.next) node.right.next = node.next.left
 
-  bfsConnectRecusrive(root.left)
-  bfsConnectRecusrive(root.right)
+  bfsConnectRecusrive(node.left)
+  bfsConnectRecusrive(node.right)
 
-  return root
+  return node
 }
 
 const root = { "val": 3, "left": { "val": 9, "left": null, "right": null }, "right": { "val": 20, "left": { "val": 15, "left": null, "right": null }, "right": { "val": 7, "left": null, "right": null } } }

@@ -23,7 +23,7 @@ function BFS(root) {
   // BFS processes nodes level by level using a queue data structure
   while (queue.length > 0) {
 
-    const levelSize = queue.length;  // Number of nodes at current level
+    const levelSize = queue.length;  // Number of nodes at current level (at this point queue will always have node belonging to the same level. DRY RUN)
     const currentLevelResult = [];   // Array to store values at current level
 
     // Process all nodes at the current level

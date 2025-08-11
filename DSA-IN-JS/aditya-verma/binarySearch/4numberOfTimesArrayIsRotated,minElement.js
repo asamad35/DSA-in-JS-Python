@@ -32,30 +32,30 @@ function numberOfTimesArrayIsRotated(arr, rotationType) {
   let start = 0;
   let end = arr.length - 1
 
-  // edge case when array is sorted
+  // edge case when array is sorted OR rotated N number of times
   if (arr[start] <= arr[end]) return 0
 
   while (start <= end) {
+
     const mid = Math.floor((start + end) / 2)
     const prev = (mid - 1 + arr.length) % arr.length // circular prev 
     const next = (mid + 1) % arr.length // circular next
 
-    // if array is rotated to number of times which is equal to its length, it implies array is sorted
-    if (arr[0] <= arr[arr.length - 1]) {
-      return 0
-    }
-    if (arr[mid] < arr[prev] && arr[mid] < arr[next]) {
+    if (arr[mid] <= arr[prev] && arr[mid] <= arr[next]) {
       return rotationType === 'clockwise' ? mid : arr.length - mid
     }
-    else if (arr[mid] >= arr[0]) { // this means first half is sorted
+
+    // if the current subArray is sorted then return the start index
+    if (arr[start] <= arr[end]) return start
+
+    if (arr[mid] >= arr[start]) { // this means first half is sorted, search in 2nd half
       start = mid + 1
-    } else if (arr[mid] <= arr[arr.length - 1]) { // this means second half is sorted
+    } else { // this means second half is sorted, search in first half
       end = mid - 1
     }
   }
-
-
 }
-console.log(numberOfTimesArrayIsRotated([5, 4, 3, 1, 2], 'clockwise'))
+
+console.log(numberOfTimesArrayIsRotated([2, 1], 'clockwise'))
 
 

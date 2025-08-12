@@ -23,15 +23,16 @@ function largestSubArrayOfSumK(arr, k) {
       end++;
     }
 
+
+    if (sum > k) {
+      sum -= arr[start];
+      start++;
+    }
+    // check at last because end and start can update above 
     if (sum === k) {
       ans = Math.max(ans, end - start);
       sum += arr[end];
       end++;
-      sum -= arr[start];
-      start++;
-    }
-
-    if (sum > k) {
       sum -= arr[start];
       start++;
     }

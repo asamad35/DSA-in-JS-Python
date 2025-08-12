@@ -10,7 +10,7 @@
  *      - If mid element is greater than its next element, then we need to check in left half. 
  *      - Because we need go where the slope is increasing. This will guarantee that we will find a peak element.
  *      - If slope keeps increasing, then the peak element will be the last element of the array.
- *      - If slope drops in b/w, then it will vreate a local maxima. And that local maxima will be our peak element.
+ *      - If slope drops in b/w, then it will create a local maxima. And that local maxima will be our peak element.
  *       
  *      - If mid element is lesser than both of its neighbours, then we can go at any half.
  *      - As both halves has increasing slope. So peak element will be present guranteed in both halves.
@@ -19,34 +19,26 @@
 
 function peakElement(arr) {
   let start = 0;
-  let end = arr.length - 1
+  let end = arr.length - 1;
 
-  // handling edge cases
-
+  // Edge cases
   if (arr.length === 1) return arr[0]
-  if (arr[0] > arr[1]) {
-    return arr[0]
-  }
+  if (arr[0] > arr[1]) return arr[0]
+  if (arr[arr.length - 1] > arr[arr.length - 2]) return arr[arr.length - 1]
 
-  if (arr[arr.length - 1] > arr[arr.length - 2]) {
-    return arr[arr.length - 1]
-  }
+
+  // we have already checked the edge case, if we dont do this then mid-1 or mid+1 might go out of bound.
+  start = 1;
+  end = arr.length - 2
 
   while (start <= end) {
     const mid = Math.floor((start + end) / 2)
 
-    if (arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1]) {
-      return arr[mid]
-    }
-
-    if (arr[mid - 1] > arr[mid]) {
-      end = mid - 1
-    } else {
-      start = start + 1
-    }
+    if (arr[mid] >= arr[mid - 1] && arr[mid] >= arr[mid + 1]) return arr[mid]
+    if (arr[mid] >= arr[mid - 1]) start = mid + 1;
+    else end = mid - 1
   }
-
 }
 
 
-console.log(peakElement([2, 1]))
+console.log(peakElement([3, 4, 3, 2, 1]))

@@ -1,9 +1,9 @@
-const cities = ["delhi", "kolkata", "mumbai"];
+const cities = ["delhi", "kolkata", "mumbai", "delhi"];
 
 Array.prototype.arrToObj = function () {
   const obj = {};
   for (let i = 0; i < this.length; i++)
-    if (!(this[i] in obj)) obj[this[i]] = this[i];
+    obj[this[i]] = this[i];
 
   return obj;
 };

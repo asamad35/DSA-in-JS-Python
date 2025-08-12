@@ -38,5 +38,16 @@ function experiment2() {
   }
 }
 
+
+// let is blocked scoped
+function experiment3() {
+  for (let i = 0; i < 3; i++) {
+    setTimeout(function () {
+      console.log(i)
+    }, 100)
+  }
+}
+
 experiment1()
 experiment2()
+experiment3()

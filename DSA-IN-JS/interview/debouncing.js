@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 export default function App() {
   const [typing, setTyping] = useState("false");
 
-  function debounceCallback(args) {
+  function debounceCallback(...args) {
     setTyping("false");
   }
   function debounce(debounceCallback, sec = 2000) {

@@ -18,26 +18,48 @@ function largestSubArrayOfSumK(arr, k) {
   let start = 0;
 
   while (end < arr.length) {
-    if (sum < k) {
-      sum += arr[end];
-      end++;
-    }
+    sum += arr[end];
 
-
-    if (sum > k) {
+    // shrink window until sum <= k
+    while (sum > k) {
       sum -= arr[start];
       start++;
     }
-    // check at last because end and start can update above 
+
+    // check if sum matches k
     if (sum === k) {
-      ans = Math.max(ans, end - start);
-      sum += arr[end];
-      end++;
-      sum -= arr[start];
-      start++;
+      ans = Math.max(ans, end - start + 1);
     }
+
+    end++;
   }
   console.log(ans);
 }
 
-largestSubArrayOfSumK([4, 1, 4, 5, 3, 2, 1, 2, 1, 1], 5);
+// Test case 1: Basic example with subarray sum equals k
+largestSubArrayOfSumK([1, 2, 1, 1], 5);
+// Expected output: 4 (subarray [1, 2, 1, 1])
+
+// Test case 2: Multiple possible subarrays with sum k
+largestSubArrayOfSumK([1, 2, 3, 2, 1], 5);
+// Expected output: 2 (subarrays [2, 3] and [3, 2])
+
+// Test case 3: Entire array sums to k
+largestSubArrayOfSumK([2, 2, 2], 6);
+// Expected output: 3
+
+// Test case 4: No subarray sums to k
+largestSubArrayOfSumK([1, 2, 3], 7);
+// Expected output: 0
+
+// Test case 5: Single element equals k
+largestSubArrayOfSumK([5, 1, 2], 5);
+// Expected output: 1
+
+// Test case 6: Array with zeros
+largestSubArrayOfSumK([0, 0, 0, 5], 5);
+// Expected output: 4 (subarray [0,0,0,5])
+
+// Test case 7: Array with repeated elements
+largestSubArrayOfSumK([1, 1, 1, 1, 1, 1], 3);
+// Expected output: 3 (subarray [1,1,1])

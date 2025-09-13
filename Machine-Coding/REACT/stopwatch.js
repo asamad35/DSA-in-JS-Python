@@ -1,74 +1,40 @@
+import "./styles.css";
 import { useEffect, useState } from "react";
-import React from "react";
 
-const initialTime = { state: "start", hours: 0, minutes: 59, seconds: 55 };
-const runTimer = (timer, setTimer) => {
-  if (timer.seconds === 59) {
-    const newSeconds = 0;
-    let newMinutes = null;
-    let newHours = null;
+export default function App() {
+  const [time, setTime] = useState(3600);
+  const [buttonState, setButtonState] = useState("start");
+  const getFormattedTime = () => {
+    const hours = Math.floor(time / 3600)
+      .toString()
+      .padStart(2, "0");
+    const minutes = Math.floor((time % 3600) / 60)
+      .toString()
+      .padStart(2, "0");
+    const seconds = Math.floor(((time % 3600) % 60) % 60)
+      .toString()
+      .padStart(2, "0");
 
-    if (timer.minutes === 59) {
-      newMinutes = 0;
-      newHours = timer.hours + 1;
-    } else {
-      newMinutes = timer.minutes + 1;
-      newHours = timer.hours;
-    }
-    setTimer({
-      ...timer,
-      hours: newHours,
-      minutes: newMinutes,
-      seconds: newSeconds,
-    });
-    return;
-  }
-  setTimer({ ...timer, seconds: timer.seconds + 1 });
-};
-function App() {
-  const [timer, setTimer] = useState(initialTime);
-  const updateTimerState = state => {
-    if (state === "reset") {
-      setTimer({ ...timer, ...initialTime });
-      return;
-    }
-    setTimer({ ...timer, state: state });
+    if (time < 0) return `00:00:00`
+    return `${hours}:${minutes}:${seconds}`;
   };
+
   useEffect(() => {
+    if (buttonState === "stop") return;
     const interval = setInterval(() => {
-      if (timer.state === "start") runTimer(timer, setTimer);
+      console.log(getFormattedTime());
+      setTime((prev) => prev - 1); // prev + 1 stop watch
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [timer, setTimer]);
+  }, [time, buttonState]);
+
   return (
-    <div className="flex flex-col  items-center justify-center mt-10">
-      <p>
-        {`${timer.hours}`.padStart(2, 0)}:{`${timer.minutes}`.padStart(2, 0)}:
-        {`${timer.seconds}`.padStart(2, 0)}
-      </p>
-      <div className="flex justify-center">
-        <button
-          className="bg-red-200 rounded-xl p-1 m-2"
-          onClick={() => updateTimerState("start")}
-        >
-          Start
-        </button>
-        <button
-          className="bg-green-200 rounded-xl p-1 m-2"
-          onClick={() => updateTimerState("paused")}
-        >
-          pause
-        </button>
-        <button
-          className="bg-blue-200 rounded-xl p-1 m-2"
-          onClick={() => updateTimerState("reset")}
-        >
-          reset
-        </button>
-      </div>
-    </div>
+    <>
+      <div>{getFormattedTime()}</div>
+      <div onClick={() => setButtonState("start")}>Start</div>
+      <div onClick={() => setButtonState("stop")}>Stop</div>
+      <div onClick={() => setButtonState("reset")}>Reset</div>
+    </>
   );
 }
-
-export default App;

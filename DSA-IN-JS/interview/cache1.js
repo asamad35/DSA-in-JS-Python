@@ -16,14 +16,6 @@ function memoizedFunction(functionToBeMemoized) {
   }
 }
 
-
-
-
-
-
-
-
-
 const memoizedClumsyProduct = memoizedFunction(product);
 
 console.time();

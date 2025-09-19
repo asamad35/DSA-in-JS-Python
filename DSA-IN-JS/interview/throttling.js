@@ -1,28 +1,26 @@
-// add throttling.js file in the html script src to run this.
+import { useCallback } from "react";
 import "./styles.css";
 
-const input = document.getElementsByTagName("input")[0];
+export default function App() {
+  function cb() {
+    console.log("a");
+  }
 
-function throttle(cb, delay) {
-  let throttleFlag = false;
+  function throttle(cb) {
+    let timer;
+    return function () {
+      if (timer) return;
+      timer = setTimeout(() => {
+        cb();
+        timer = null;
+      }, 1000);
+    };
+  }
 
-  return function (...args) {
-    if (throttleFlag) return;
-
-    throttleFlag = true;
-    cb.apply(this, args);
-    setTimeout(() => {
-      throttleFlag = false;
-    }, delay);
-  };
+  const throttleHandler = useCallback(throttle(cb), []);
+  return (
+    <div className="App">
+      <input onChange={throttleHandler} />
+    </div>
+  );
 }
-
-function handleInput(test) {
-  console.log("input has throttle", test);
-}
-
-const throttleInputHandler = throttle(handleInput, 2000);
-
-input.addEventListener("input", function () {
-  throttleInputHandler("abcd");
-});

@@ -1,34 +1,16 @@
-/**
- * @param {number[]} nums
- * @return {number[][]}
- */
-var threeSum = function (nums) {
-  const result = [];
-  const sortedNums = nums.sort((a, b) => a - b)
+function validAnagram(str1, str2) {
+  if (str1.length !== str2.length) return false;
 
-  for (let i = 0; i < sortedNums.length - 2; i++) {
-    if (i > 0 && sortedNums[i] === sortedNums[i - 1]) continue
+  const map = new Map();
 
-    let target = sortedNums[i];
-    let start = i + 1;
-    let end = sortedNums.length - 1
-
-    while (start < end) {
-      const sum = target + sortedNums[start] + sortedNums[end];
-      if (sum === 0) {
-        result.push([sortedNums[i], sortedNums[start], sortedNums[end]])
-        start++
-        end--
-      }
-      else if (sum < 0) start++
-      else if (sum > 0) end--
-      
-      
-    }
+  for (let i = 0; i < str1.length; i++) {
+    map.set(str1[i], (map.get(str1[i]) || 0) + 1)
+    map.set(str2[i], (map.get(str2[i]) || 0) + 1)
   }
 
-  return result
-};
-
-
-console.log(threeSum([-1, 0, 1, 2, -1, -4]))
+  for (let [key, value] of map) {
+    if (value % 2 !== 0) return false
+  }
+  return true
+}
+console.log(validAnagram('abcd', 'dcabb'))

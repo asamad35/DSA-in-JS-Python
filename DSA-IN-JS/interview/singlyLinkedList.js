@@ -1,6 +1,6 @@
 class Node {
-  next = null;
   constructor(value) {
+    this.next = null;
     this.value = value;
   }
 }
@@ -8,7 +8,6 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
-    this.next = null;
   }
 
   append(value) {
@@ -33,7 +32,7 @@ class LinkedList {
     let prevNode = null;
     let currentNode = this.head;
 
-    while (currentNode.value !== value && currentNode) {
+    while (currentNode && currentNode.value !== value) {
       prevNode = currentNode;
       currentNode = currentNode.next
     }
